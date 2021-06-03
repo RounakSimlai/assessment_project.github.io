@@ -22,10 +22,11 @@ Phone:- +917044070705
 1. Clone the github repository using 'git clone https://github.com/RounakSimlai/assessment_project.git' in the Git Bash command prompt 
 2. Make a copy of the '.env.example' file and rename the copy to '.env'
 3. Open a command prompt in the project directory
-4. Set the application key using 'php artisan key:generate'
-5. Create a SQLite database named 'database.sqlite' in the database folder of the project
-6. Run command 'php artisan migrate' to migrate the tables to the database
-7. Run command 'php artisan serve' to launch the application.
+4. Run 'composer update' to load the dependencies
+5. Set the application key using 'php artisan key:generate'
+6. Create a SQLite database named 'database.sqlite' in the database folder of the project
+7. Run command 'php artisan migrate' to migrate the tables to the database
+8. Run command 'php artisan serve' to launch the application.
 
 ## Points about this project
 
