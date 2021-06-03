@@ -16,8 +16,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login', 'App\Http\Controllers\LoginController@create');
-Route::get('/login', 'App\Http\Controllers\LoginController@store');
-Route::get('/register', 'App\Http\Controllers\RegisterController@create');
-Route::get('/register', 'App\Http\Controllers\RegisterController@store');
-Route::get('/profile/{user}', 'App\Http\Controllers\ProfilesController@index');
+Route::get('/login', 'App\Http\Controllers\LoginController@create')->name('login.create');
+Route::post('/login', 'App\Http\Controllers\LoginController@store')->name('login.store');
+Route::get('/register', 'App\Http\Controllers\RegisterController@create')->name('register.create');
+Route::post('/register', 'App\Http\Controllers\RegisterController@store')->name('register.store');;
+Route::get('/profile/{id}', 'App\Http\Controllers\ProfilesController@index')->name('profiles.show');
+Route::get('/logout', '\App\Http\Controllers\LoginController@logout');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,8 +28,8 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:profiles',
-            'password' => 'required|min:8',
+            'email' => 'required|email|unique:profiles',
+            'password' => 'required',
             'phone' => 'required|min:10',
             'address' => 'required',
             'city' => 'required',
@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'zip' => 'required|min:6',
         ]);
 
-        $user = Profile::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -50,6 +50,6 @@ class RegisterController extends Controller
             'zip' => $request->zip,
         ]);
 
-        return redirect('profile',[$user]);
+        return redirect('login')->with('success',"Registration Successful. Please Login to Continue!");
     }
 }

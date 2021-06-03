@@ -2,24 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Login extends Model
 {
-    
+    protected $table = 'profile';
+
     protected $fillable = [
-        'name',
         'email',
         'password',
-        'phone',
-        'address',
-        'city',
-        'state',
-        'country',
-        'zip',
     ];
-
+    
     protected $hidden = [
         'password',
     ];
+    public function getAuthPassword() {
+        return $this->password;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,10 +26,16 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-       if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-        return redirect('profile',[$request->id]);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            $user = $request->user()->id;
+            return redirect()->action('App\Http\Controllers\ProfilesController@index',$user)->with('success','You are logged in!');
        }
-    }
+          return back()->with('error','Invalid Login Details!');
+       }
 
     /**
      * Remove the specified resource from storage.
@@ -36,8 +43,12 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+       //
     }
+    public function logout() {
+        Auth::logout();
+        return redirect('/')->with('success','You are logged out!');
+      }
 }

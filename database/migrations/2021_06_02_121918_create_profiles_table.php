@@ -24,6 +24,7 @@ class CreateProfilesTable extends Migration
             $table->string('state');
             $table->string('country');
             $table->string('zip');
+            $table->timestamps();
         });
     }
 

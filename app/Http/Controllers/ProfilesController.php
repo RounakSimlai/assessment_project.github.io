@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class ProfilesController extends Controller
 {
     /**
@@ -11,6 +13,7 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        
+        $user = Auth::user();
+        return view('profile', ['user' => $user]);
     }
 }
