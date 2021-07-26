@@ -1,4 +1,4 @@
-'''
+```
 <?php
 
 use Illuminate\Contracts\Http\Kernel;
@@ -54,4 +54,4 @@ $response = tap($kernel->handle(
 ))->send();
 
 $kernel->terminate($request, $response);
-'''
+```
